@@ -6,3 +6,5 @@ out
 # Vercel
 .vercel
 .vercel
+
+/src/generated/prisma

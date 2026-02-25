@@ -2,13 +2,13 @@ import { render, screen } from '@testing-library/react';
 import Home from '../src/pages/index';
 
 describe('Home page', () => {
-  it('renders the heading', () => {
+  it('renders the main heading', () => {
     render(<Home />);
-    expect(screen.getByRole('heading', { name: /hello, next\.js/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /neon notes/i })).toBeInTheDocument();
   });
 
-  it('mentions static export', () => {
+  it('links to notes page', () => {
     render(<Home />);
-    expect(screen.getByText(/static export/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /open notes/i })).toBeInTheDocument();
   });
 });
