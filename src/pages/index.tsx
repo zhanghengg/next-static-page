@@ -16,6 +16,9 @@ export default function Home() {
             <Link className="btn primary" href="/notes">
               Open Notes
             </Link>
+            <Link className="btn ghost" href="/lab">
+              Open Lab
+            </Link>
             <a className="btn ghost" href="/api/notes" target="_blank" rel="noreferrer">
               View API
             </a>
