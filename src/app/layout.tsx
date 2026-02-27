@@ -1,14 +1,38 @@
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
+import type { Metadata } from 'next';
 
-export default function App({ Component, pageProps }: AppProps) {
+import { AppShell } from './shell/AppShell';
+
+export const metadata: Metadata = {
+  title: {
+    default: 'Neon Notes',
+    template: '%s - Neon Notes',
+  },
+  description: 'A tiny Next.js app with API routes + Prisma.',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
+export default function RootLayout(props: { children: React.ReactNode }) {
+  const { children } = props;
+
   return (
-    <>
-      <Head>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap"
+          rel="stylesheet"
+        />
         <style>{globalCss}</style>
-      </Head>
-      <Component {...pageProps} />
-    </>
+      </head>
+      <body>
+        <AppShell>{children}</AppShell>
+      </body>
+    </html>
   );
 }
 

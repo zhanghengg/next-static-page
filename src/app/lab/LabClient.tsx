@@ -1,5 +1,6 @@
+'use client';
+
 import { useEffect, useMemo, useState } from 'react';
-import { Layout } from '@/src/components/Layout';
 
 function pad2(n: number) {
   return String(n).padStart(2, '0');
@@ -11,7 +12,7 @@ function makeSignal(t: number, seed: number) {
   return { a, b };
 }
 
-export default function Lab() {
+export function LabClient() {
   const [t, setT] = useState(0);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ export default function Lab() {
   const s3 = makeSignal(t, 3.2);
 
   return (
-    <Layout title="Lab - Neon Notes">
+    <>
       <section className="wrap">
         <div className="top">
           <h1 className="h1">LAB</h1>
@@ -61,14 +62,14 @@ export default function Lab() {
           </div>
 
           <p className="p">
-            This page exists so the hourly bot can keep shipping playful UI
-            additions without touching the core Notes flow.
+            This page exists so the hourly bot can keep shipping playful UI additions without
+            touching the core Notes flow.
           </p>
         </div>
       </section>
 
       <style>{css}</style>
-    </Layout>
+    </>
   );
 }
 

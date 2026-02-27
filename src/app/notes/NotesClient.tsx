@@ -1,6 +1,9 @@
-import { FormEvent, useMemo, useState } from 'react';
+'use client';
+
+import type { FormEvent } from 'react';
+import { useMemo, useState } from 'react';
 import useSWR from 'swr';
-import { Layout } from '@/src/components/Layout';
+
 import { fetcher } from '@/src/lib/fetcher';
 
 type Note = {
@@ -15,7 +18,7 @@ type NotesResponse = { notes: Note[] };
 
 type CreateNoteResponse = { note: Note };
 
-export default function NotesPage() {
+export function NotesClient() {
   const { data, error, isLoading, mutate } = useSWR<NotesResponse>('/api/notes', fetcher);
 
   const [title, setTitle] = useState('');
@@ -83,7 +86,7 @@ export default function NotesPage() {
   }
 
   return (
-    <Layout title="Notes - Neon Notes">
+    <>
       <section className="grid">
         <div className="panel">
           <h2 className="h2">Create Note</h2>
@@ -131,9 +134,7 @@ export default function NotesPage() {
         <div className="panel">
           <div className="panelTop">
             <h2 className="h2">Recent</h2>
-            <div className="sub">
-              {isLoading ? 'Loading…' : `${notes.length} loaded`}
-            </div>
+            <div className="sub">{isLoading ? 'Loading…' : `${notes.length} loaded`}</div>
           </div>
 
           <div className="list">
@@ -149,9 +150,7 @@ export default function NotesPage() {
                     </button>
                   </div>
                   <div className="noteBody">{n.content}</div>
-                  <div className="noteMeta">
-                    {new Date(n.createdAt).toLocaleString()}
-                  </div>
+                  <div className="noteMeta">{new Date(n.createdAt).toLocaleString()}</div>
                 </article>
               ))
             )}
@@ -160,7 +159,7 @@ export default function NotesPage() {
       </section>
 
       <style>{css}</style>
-    </Layout>
+    </>
   );
 }
 

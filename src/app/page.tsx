@@ -1,15 +1,14 @@
 import Link from 'next/link';
-import { Layout } from '@/src/components/Layout';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <Layout title="Neon Notes">
+    <>
       <section className="hero">
         <div className="heroLeft">
           <h1 className="h1">Neon Notes</h1>
           <p className="lead">
-            A tiny full-stack Next.js app: API routes, Prisma (SQLite), and a UI
-            that actually has some attitude.
+            A tiny full-stack Next.js app: API routes, Prisma (SQLite), and a UI that actually
+            has some attitude.
           </p>
 
           <div className="cta">
@@ -62,7 +61,7 @@ POST /api/notes
       </section>
 
       <style>{css}</style>
-    </Layout>
+    </>
   );
 }
 
